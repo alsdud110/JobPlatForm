@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.db.mapper.SelfIntroMapper">
+
+<insert id="insertSelfIntro" parameterType="com.db.selfIntro.SelfIntroDto">
+	insert into Self_intro(id,intro_text1,intro_text2,intro_text3,intro_text4,title) values(#{id},#{intro_text1},#{intro_text2},#{intro_text3},#{intro_text4},#{title})
+</insert>
+
+<update id="updatetSelfIntro" parameterType="com.db.selfIntro.SelfIntroDto">
+	update Self_intro set (id,intro_text1,intro_text2,intro_text3,intro_text4,title) values(#{id},#{intro_text1},#{intro_text2},#{intro_text3},#{intro_text4},${title})
+</update>
+
+<delete id="deleteSelfIntro" parameterType="String">
+	delete from Self_intro where introNo = #{introNo}
+</delete>
+
+<select id="selectAllSelfIntro" resultType="com.db.selfIntro.SelfIntroDto" parameterType="String">
+	select * from Self_intro where id = #{id}
+</select>
+
+</mapper>

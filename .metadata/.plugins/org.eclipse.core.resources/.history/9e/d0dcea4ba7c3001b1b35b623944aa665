@@ -1,0 +1,16 @@
+package com.db.recruit;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.db.mapper.RecruitMapper;
+
+@Service
+public class RecruitService {
+	@Autowired
+	private RecruitMapper mapper;
+	
+	public RecruitService(RecruitMapper mapper) {
+		this.mapper = mapper;
+	}
+}

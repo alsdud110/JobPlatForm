@@ -1,0 +1,9 @@
+package com.db.mapper;
+
+import java.util.List;
+
+import com.db.recruit.RecruitDto;
+
+public interface RecruitMapper {
+	public List<RecruitDto> selectAllRecruit();
+}

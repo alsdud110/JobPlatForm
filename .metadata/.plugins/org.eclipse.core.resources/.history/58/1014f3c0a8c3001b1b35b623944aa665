@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.db.mapper.ResumeMapper">
+
+<insert id="firstInsert" parameterType="String">
+	insert into resume (id) values (#{id})
+</insert>
+
+<insert id="insertResume" parameterType="com.db.resume.ResumeDto">
+	insert into resume values(#{id},#{license},#{academicBG},#{career},#{res_img})
+</insert>
+
+<update id="updatetResume" parameterType="com.db.resume.ResumeDto">
+	update resume set license = #{license}, academicBG = #{academicBG}, career = #{career}, res_img = #{res_img} where id = #{id}
+</update>
+
+<select id="selectAllResume" resultType="com.db.resume.ResumeDto" parameterType="String">
+	select * from resume where id = #{id}
+</select>
+
+<select id="checkId" resultType="String" parameterType="String">
+	select id from resume where id = #{id}
+</select>
+
+</mapper>
