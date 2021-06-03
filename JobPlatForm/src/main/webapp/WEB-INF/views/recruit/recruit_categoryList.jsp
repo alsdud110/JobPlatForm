@@ -7,6 +7,10 @@
 <meta charset='utf-8'>
 <title>팀플 메인</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
 <link rel='stylesheet' type='text/css' media='screen'
 	href='${contextPath}/resources/styles/main-section.css'>
 <script src="${contextPath}/resources/libs/jquery-3.6.0.min.js"></script>
@@ -29,32 +33,33 @@
 				style="width: 80px; height: 50px;">
 		</article>
 	</section>
-	<div id = "result">
-	</div>
-	<section class="main-company">
-		<h1>추천공고</h1>
-		<c:forEach var="recruit" items="${dto}" varStatus="i">
-			<div class="list-box">
-				<ul class="company-list">
-					<li class="in-list"><a href="detail/${recruit.no }">
-							<div class="div-imgbox">
-								<img src="#">
+	<div id="result"></div>
+
+	<h1>추천공고</h1>
+			<div class="container">
+				<div class="row">
+					<c:forEach var="recruit" items="${dto}" varStatus="i">
+					<div class="col-xs-6">
+					<a href="/recruit/detail/${recruit.no}">
+						<div class="card">
+							<img src="${contextPath}/${recruit.img}" class="card-img-top" alt="..." >
+							<div class="card-body">
+								<h5 class="card-title">${recruit.comName }</h5>
+								<p class="card-text">태그 : ${recruit.tag }</p>
+								<p class="card-text">카테고리 : ${recruit.category }</p>
 							</div>
-							<div class="div-textbox">
-								<h2>${recruit.comName }</h2>
-								${recruit.tag }, ${recruit.category }
-							</div>
-					</a></li>
-				</ul>
+						</div>
+					</a>
+					</div>
+					</c:forEach>
+				</div>
 			</div>
-		</c:forEach>
-	</section>
-	<div>
-		<jsp:include page="../include/footer.jsp" />
-	</div>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script>
+
+<div>
+<jsp:include page="../include/footer.jsp" />
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
 	$(function() {
 		$("#result").hide();
 		$("#btn_search").click(function() {
@@ -62,32 +67,38 @@
 			var keyWord = $("#main-search").val();
 
 			var data = {"searchBy" : searchBy,"word" : keyWord};
-			$.ajax({
-				url : "search.do",
-				data : data,
-				dataType : "json",
-				success : function(r) {
-					var tag = "";
-					const element = document.getElementById('searchResult');
+				$.ajax({
+					url : "search",
+					data : data,
+					dataType : "json",
+					success : function(r) {
+						var tag = "";
+						const element = document.getElementById('searchResult');
 
-					if (r.code == 200) {
-						var arr = r.result;
-						for (i = 0; i < arr.length; i++) {
-							tag += "<p><span>" + arr[i].comName + "</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>" + arr[i].tag + "</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>" + arr[i].category + "</span>&nbsp;&nbsp;&nbsp;&nbsp;</p>";
+						if (r.code == 200) {
+							var arr = r.result;
+							for (i = 0; i < arr.length; i++) {
+							tag += "<p><span>"
+								+ arr[i].comName
+								+ "</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>"
+								+ arr[i].tag
+								+ "</span>&nbsp;&nbsp;&nbsp;&nbsp;<span>"
+								+ arr[i].category
+								+ "</span>&nbsp;&nbsp;&nbsp;&nbsp;</p>";
+							}
+						} else {
+							tag = r.message;
 						}
-					} else {
-						tag = r.message;
-					}
-					$('#result').html(tag);
-					$("#result").show();
-					$(".main-company").hide();
-				},
-				error : function(request,error,status) {
-					console.log("code:"+ request.status + "message:" + request.responseText + "error:" + error);
-				}
-			});
+							$('#result').html(tag);
+							$("#result").show();
+							$(".main-company").hide();
+						},
+					error : function(request,error, status) {
+							console.log("code:"+ request.status+ "message:"+ request.responseText+ "error:"+ error);
+							}
+						});
+				});
 		});
-	});
-</script>
+	</script>
 </body>
 </html>

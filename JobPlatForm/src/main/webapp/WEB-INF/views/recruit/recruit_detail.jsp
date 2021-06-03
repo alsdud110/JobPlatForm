@@ -20,6 +20,7 @@
 	</section>
 	<%
 		RecruitDto a = (RecruitDto)session.getAttribute("recruit");
+		String img = a.getImg();
 		String comName = a.getComName();
 		String tag = a.getTag();
 		String category = a.getCategory();
@@ -34,22 +35,32 @@
 		String test6 = a.getTest6();
 	%>
 	<section class="main-company">
-		<h1>추천공고</h1>
 			<div class="list-box">
 				<ul class="company-list">
 					<li class="in-list"><a href="#">
 							<div class="div-imgbox">
-								<img src="#">
+								<img src="${contextPath}/<%=img%>">
 							</div>
-							<div class="div-textbox">
-								<h2><%=comName %></h2>
-								<%=tag %>, <%=category %>
-								<%=tel %>,<%=fax %>,<%=address %>
-							</div>
+							<h1><%=comName %></h1>
+							<h1><%=tag %> , <%=category %></h1>
+							<span>소개</span>
+							<span><%=test1 %></span>
+							<span>모집 기간</span>
+							<span><%=test2 %></span>
+							<span>모집 분야</span>
+							<span><%=test3 %></span>
+							<span>전형 절차</span>
+							<span><%=test4 %></span>
+							<span>유의 사항</span>
+							<span><%=test5 %></span>
+							<span>전형절차</span>
+							<span><%=test6 %></span>
 					</a></li>
 				</ul>
 			</div>
 	</section>
+	<a href = "javascript:popOn();">지원하기</a>
+	
 	<div>
 		<jsp:include page="../include/footer.jsp" />
 	</div>

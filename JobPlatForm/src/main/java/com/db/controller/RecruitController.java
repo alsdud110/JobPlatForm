@@ -46,10 +46,11 @@ public class RecruitController {
 	public String getDetailRecruit(@PathVariable int no, Model model, HttpSession session) {
 		RecruitDto recruit = service.selectRecruitByNo(no);
 		session.setAttribute("recruit", recruit);
+		System.out.println(recruit.getNo());
 		return "recruit/recruit_detail";
 	}
 	
-	@RequestMapping("/search.do")
+	@RequestMapping("/search")
 	public void searchBy(HttpServletRequest request, Model model, HttpServletResponse response) {
 		String searchBy = request.getParameter("searchBy");
 		String word = request.getParameter("word");

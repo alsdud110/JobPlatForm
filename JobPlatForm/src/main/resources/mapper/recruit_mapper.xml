@@ -6,25 +6,25 @@
   
 <mapper namespace="com.db.mapper.RecruitMapper">
 	<select id = "selectAllRecruit" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.test1, r.test2, r.test3, r.test4, r.test5, r.test6
+		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.text1, r.text2, r.text3, r.text4, r.text5
 		from company c, recruit r
 		where c.comName = r.comName;
 	</select>
 	
 	<select id = "selectRecruitByCategory" parameterType = "java.lang.String" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.test1, r.test2, r.test3, r.test4, r.test5, r.test6
+		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.text1, r.text2, r.text3, r.text4, r.text5
 		from company c, recruit r
 		where c.comName = r.comName and r.category = #{category};
 	</select>
 	
 	<select id = "selectRecruitByNo" parameterType = "int" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.test1, r.test2, r.test3, r.test4, r.test5, r.test6
+		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category,  r.text1, r.text2, r.text3, r.text4, r.text5
 		from company c, recruit r
 		where c.comName = r.comName and r.no = #{no};
 	</select>
 	
 	<select id = "selectRecruitBy" parameterType = "map" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category, r.test1, r.test2, r.test3, r.test4, r.test5, r.test6
+		select c.img, c.comName, c.tel, c.fax, c.address, r.tag,r.no, r.category,  r.text1, r.text2, r.text3, r.text4, r.text5
 		from company c, recruit r
 		where c.comName = r.comName and
 		<choose>
