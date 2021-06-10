@@ -41,7 +41,7 @@
         </ul>
         <ul>
           <h3>지원관리</h3>
-          <li><a href="#">지원회사</a> </li>
+          <li><a href="/applyList">지원회사</a> </li>
           <li><a href="#">관심기업</a> </li>
           <li><a href="#"></a> </li>
         </ul>

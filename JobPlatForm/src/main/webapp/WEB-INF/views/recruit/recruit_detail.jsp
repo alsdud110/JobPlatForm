@@ -10,6 +10,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'>
 <link rel='stylesheet' type='text/css' media='screen'
 	href='${contextPath}/resources/styles/main-section.css'>
+	<link rel = 'stylesheet' type = "text/css" media = 'screen' href = "${contextPath}/resources/styles/recruit.css">
 <script src="${contextPath}/resources/libs/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -21,48 +22,55 @@
 	<%
 		RecruitDto a = (RecruitDto)session.getAttribute("recruit");
 		String img = a.getImg();
+		out.print(img);
+		String title = a.getTitle();
 		String comName = a.getComName();
-		String tag = a.getTag();
 		String category = a.getCategory();
 		String tel = a.getTel();
 		String fax = a.getFax();
-		String address = a.getAddress();
-		String test1 = a.getTest1();
-		String test2 = a.getTest2();
-		String test3 = a.getTest3();
-		String test4 = a.getTest4();
-		String test5 = a.getTest5();
-		String test6 = a.getTest6();
+		String address = a.getRoadAddr();
+		String text1 = a.getText1();
+		String text2 = a.getText2();
+		String text3 = a.getText3();
+		String text4 = a.getText4();
+		String text5 = a.getText5();
 	%>
-	<section class="main-company">
-			<div class="list-box">
-				<ul class="company-list">
-					<li class="in-list"><a href="#">
-							<div class="div-imgbox">
-								<img src="${contextPath}/<%=img%>">
+	<div class = "recruit_detail">
+							<div class="img_box">
+								<img src= "${contextPath}/<%=img%>">
 							</div>
-							<h1><%=comName %></h1>
-							<h1><%=tag %> , <%=category %></h1>
-							<span>소개</span>
-							<span><%=test1 %></span>
-							<span>모집 기간</span>
-							<span><%=test2 %></span>
-							<span>모집 분야</span>
-							<span><%=test3 %></span>
-							<span>전형 절차</span>
-							<span><%=test4 %></span>
-							<span>유의 사항</span>
-							<span><%=test5 %></span>
-							<span>전형절차</span>
-							<span><%=test6 %></span>
-					</a></li>
-				</ul>
-			</div>
-	</section>
-	<a href = "javascript:popOn();">지원하기</a>
+							<div class = "comInfo">
+							<h1>기업 명 : <%=comName %></h1>
+							<h2>지원 분야 : <%=category %></h2>
+							<h3>
+							<c:forEach var = "tag" items = "${tag}" varStatus = "i">
+								#${tag.tag}
+							</c:forEach>
+							</h3><hr>
+							</div>
+							<span>모집 분야 : </span>
+							<span><%=text1 %></span><hr>
+							<span>모집 절차 : </span>
+							<span><%=text2 %></span><hr>
+							<span>모집 기간 : </span>
+							<span><%=text3 %></span><hr>
+							<span>유의 사항 : </span>
+							<span><%=text5 %></span><hr>
+	<a href = "javascript:popup();">지원하기</a>
+	</div>
 	
 	<div>
 		<jsp:include page="../include/footer.jsp" />
 	</div>
+	<script>
+	  function popup(){
+            var url = "/selectTitle";
+            var name = "지원하기";
+            var option = "width = 500, height = 500, top = 100, left = 200, location = no"
+            window.open(url, name, option); 
+            
+            
+        }
+    </script>
 </body>
 </html>

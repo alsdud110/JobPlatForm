@@ -1,0 +1,11 @@
+package com.db.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface ApplyMapper {
+	public List<ApplyDto> selectIntroTitle(String mEmail);
+	
+	public void applyCompany(int no, int introNo);
+
+}

@@ -1,0 +1,21 @@
+package com.db.recruit;
+
+public class RecruitDto {
+	private String img;
+	private String comName;
+	private String tel;
+	private String fax;
+	private String address;
+	private int no;
+	private String title;
+	private String tag;
+	private String category;
+	private String text1;
+	private String text2;
+	private String text3;
+	private String text4;
+	private String text5;
+	
+	
+	
+}

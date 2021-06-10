@@ -1,0 +1,61 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel='stylesheet' type='text/css' media='screen'
+	href='${contextPath}/resources/styles/main-section.css'>
+<link rel = 'stylesheet' type = "text/css" media = 'screen' href = "${contextPath}/resources/styles/recruit.css">
+<script src="${contextPath}/resources/libs/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<jsp:include page="../include/header.jsp" />
+	<jsp:include page="../include/main-aside.jsp" />
+<section class="main-banner">
+	<img src="${contextPath}/resources/images/banner.png">
+</section>
+<section class="main-search">
+		<article class="search">
+			<select name="searchBy" id="searchBy">
+				<option id="tag" value="tag">태그</option>
+				<option id="category" value="category">카테고리</option>
+				<option id="comName" value="comName">기업명</option>
+			</select> <input type="text" name="word" id="main-search" class="main-search"
+				placeholder=" 검색어를 입력해주세요"> &nbsp;&nbsp;&nbsp;&nbsp; <input
+				type="button" id="btn_search" value="검색"
+				style="width: 80px; height: 50px;">
+		</article>
+	</section>
+	<div id="result">adfasdf</div>
+
+<h1>추천공고</h1>
+		<div class = "recruit">
+			<c:forEach var="recruit" items="${dto}" varStatus="i">
+			<a href = "detail/${recruit.no }">
+				<div class="container">
+						<img src = "${contextPath}/${recruit.img}">
+						<div class = "comName">
+							<h3>${recruit.comName}</h3>
+							<h4 class = "category">${recruit.title }<br>
+							카테고리 : ${recruit.category }<br>
+							경력 : ${recruit.career }
+							</h4>
+						</div>
+				</div>
+			</a>
+			</c:forEach>
+		</div>
+
+   
+		
+<div>
+<jsp:include page="../include/footer.jsp"/>
+</div>
+</body>
+</html>

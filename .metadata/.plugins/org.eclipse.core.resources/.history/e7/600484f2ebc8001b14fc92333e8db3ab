@@ -1,0 +1,21 @@
+package com.db.apply;
+
+public class ApplyDto {
+	private int no;
+	private int introno;
+	private String comName;
+	private String category;
+	private String mEmail;
+	private String title;
+	private String Intro_text1;
+	private String Intro_text2;
+	private String Intro_text3;
+	private String Intro_text4;
+	
+	
+	
+	public ApplyDto() {
+	}
+	
+	
+}

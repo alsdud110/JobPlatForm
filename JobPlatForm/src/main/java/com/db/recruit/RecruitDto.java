@@ -4,37 +4,52 @@ public class RecruitDto {
 	private String img;
 	private String comName;
 	private String tel;
-	private String fax;
-	private String address;
+	private String fax = "";
+	private String roadAddr = "";
 	private int no;
+	private String title;
 	private String tag;
+	private String[] recruitTag;
+	private String career;
 	private String category;
-	private String test1;
-	private String test2;
-	private String test3;
-	private String test4;
-	private String test5;
-	private String test6;
+	private String text1;
+	private String text2;
+	private String text3;
+	private String text4;
+	private String text5;
 	
-	
-	public RecruitDto() {
+	public RecruitDto(int no, String comName, String category, String title, String career, String text1, String text2,
+			String text3, String text4, String text5) {
+		this.no = no;
+		this.comName = comName;
+		this.title = title;
+		this.career = career;
+		this.category = category;
+		this.text1 = text1;
+		this.text2 = text2;
+		this.text3 = text3;
+		this.text4 = text4;
+		this.text5 = text5;
 	}
-	public RecruitDto(String img, String comName, String tel, String fax, String address, int no, String tag,
-			String category, String test1, String test2, String test3, String test4, String test5, String test6) {
+	public RecruitDto() {}
+	public RecruitDto(String img, String comName, String tel, String fax, String roadAddr, int no, String title,
+			String tag, String career, String category, String text1, String text2, String text3, String text4,
+			String text5) {
 		this.img = img;
 		this.comName = comName;
 		this.tel = tel;
 		this.fax = fax;
-		this.address = address;
+		this.roadAddr = roadAddr;
 		this.no = no;
+		this.title = title;
 		this.tag = tag;
+		this.career = career;
 		this.category = category;
-		this.test1 = test1;
-		this.test2 = test2;
-		this.test3 = test3;
-		this.test4 = test4;
-		this.test5 = test5;
-		this.test6 = test6;
+		this.text1 = text1;
+		this.text2 = text2;
+		this.text3 = text3;
+		this.text4 = text4;
+		this.text5 = text5;
 	}
 	public String getImg() {
 		return img;
@@ -60,11 +75,12 @@ public class RecruitDto {
 	public void setFax(String fax) {
 		this.fax = fax;
 	}
-	public String getAddress() {
-		return address;
+
+	public String getRoadAddr() {
+		return roadAddr;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setRoadAddr(String roadAddr) {
+		this.roadAddr = roadAddr;
 	}
 	public int getNo() {
 		return no;
@@ -72,11 +88,23 @@ public class RecruitDto {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	public String getTag() {
 		return tag;
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+	public String getCareer() {
+		return career;
+	}
+	public void setCareer(String career) {
+		this.career = career;
 	}
 	public String getCategory() {
 		return category;
@@ -84,40 +112,42 @@ public class RecruitDto {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getTest1() {
-		return test1;
+	public String getText1() {
+		return text1;
 	}
-	public void setTest1(String test1) {
-		this.test1 = test1;
+	public void setText1(String text1) {
+		this.text1 = text1;
 	}
-	public String getTest2() {
-		return test2;
+	public String getText2() {
+		return text2;
 	}
-	public void setTest2(String test2) {
-		this.test2 = test2;
+	public void setText2(String text2) {
+		this.text2 = text2;
 	}
-	public String getTest3() {
-		return test3;
+	public String getText3() {
+		return text3;
 	}
-	public void setTest3(String test3) {
-		this.test3 = test3;
+	public void setText3(String text3) {
+		this.text3 = text3;
 	}
-	public String getTest4() {
-		return test4;
+	public String getText4() {
+		return text4;
 	}
-	public void setTest4(String test4) {
-		this.test4 = test4;
+	public void setText4(String text4) {
+		this.text4 = text4;
 	}
-	public String getTest5() {
-		return test5;
+	public String getText5() {
+		return text5;
 	}
-	public void setTest5(String test5) {
-		this.test5 = test5;
+	public void setText5(String text5) {
+		this.text5 = text5;
 	}
-	public String getTest6() {
-		return test6;
+	
+	public String[] getRecruitTag() {
+		return recruitTag;
 	}
-	public void setTest6(String test6) {
-		this.test6 = test6;
+	public void setRecruitTag(String[] recruitTag) {
+		this.recruitTag = recruitTag;
 	}
+	
 }
