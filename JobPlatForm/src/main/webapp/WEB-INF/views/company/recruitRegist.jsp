@@ -43,15 +43,17 @@
 			<br>
 			<br>
 			<b>태그</b>
-			<span><input type="checkbox" name="cbTag" value="java">java</span>
-			<span><input type="checkbox" name="cbTag" value="C/C++">C/C++</span>
-			<span><input type="checkbox" name="cbTag" value="python">python</span>
-     	 	<span><input type="checkbox" name="cbTag" value="javascript">javascript</span>
-     		<span><input type="checkbox" name="cbTag" value="spring">spring</span>
-      		<span><input type="checkbox" name="cbTag" value="프론트엔드">프론트엔드</span>
-      		<span><input type="checkbox" name="cbTag" value="백엔드">백엔드</span>
-      		<span><input type="checkbox" name="cbTag" value="Oracle">Oracle</span>
-      		<span><input type="checkbox" name="cbTag" value="MYSQL">MYSQL</span>
+			<span><input type="checkbox" name="cbTag" value="자바(java)">java</span>
+			<span><input type="checkbox" name="cbTag" value="씨언어(C/C++)">C/C++</span>
+			<span><input type="checkbox" name="cbTag" value="파이썬(python)">python</span>
+     	 	<span><input type="checkbox" name="cbTag" value="자바스크립트(Javascript)">Javascript</span>
+     	 	<span><input type="checkbox" name="cbTag" value="HTML(HTML)">HTML</span>
+     	 	<span><input type="checkbox" name="cbTag" value="CSS(CSS)">CSS</span>
+     		<span><input type="checkbox" name="cbTag" value="스프링(Spring)">spring</span>
+      		<span><input type="checkbox" name="cbTag" value="프론트엔드(Front-end)">프론트엔드</span>
+      		<span><input type="checkbox" name="cbTag" value="백엔드(Back-end)">백엔드</span>
+      		<span><input type="checkbox" name="cbTag" value="오라클(Oracle)">Oracle</span>
+      		<span><input type="checkbox" name="cbTag" value="mysql(MYSQL)">MYSQL</span>
 			<br>
 			<br>
 			<b>담당 업무</b>

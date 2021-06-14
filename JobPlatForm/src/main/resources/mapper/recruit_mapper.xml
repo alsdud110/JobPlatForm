@@ -26,16 +26,19 @@
 	</select>
 	
 	<select id = "selectRecruitByNo" parameterType = "int" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.roadAddr, r.no, r.career, r.category,r.title, r.text1, r.text2, r.text3, r.text4, r.text5
-		from company c, recruit r
-		where c.comName = r.comName and r.no = #{no};
+		select c.img, c.comName, c.tel, c.roadAddr, r.no,t.tag, r.career, r.category,r.title, r.text1, r.text2, r.text3, r.text4, r.text5
+		from company c, recruit r, tag t
+		where c.comName = r.comName and r.no = #{no} and r.no = t.no;
 	</select>
 	
 	<select id = "selectRecruitBy" parameterType = "map" resultType = "com.db.recruit.RecruitDto">
-		select c.img, c.comName, c.tel, c.roadAddr, r.no, r.career, r.category,r.title,r.text1, r.text2, r.text3, r.text4, r.text5
-		from company c, recruit r
-		where c.comName = r.comName and
+		select c.img, c.comName, c.tel, c.roadAddr, r.no, t.tag, r.career, r.category,r.title,r.text1, r.text2, r.text3, r.text4, r.text5
+		from company c, recruit r, tag t
+		where c.comName = r.comName and t.no = r.no and
 		<choose>
+			<when test = "searchBy.equals('tag')">
+				tag like CONCAT('%',#{word},'%');
+			</when>
  	 		<when test="searchBy.equals('career')">
  	 			career like CONCAT('%',#{word},'%');
  	 		</when>
@@ -48,4 +51,9 @@
  	 	</choose>
 	</select>
 	
+	<select id = "selectRecruitByCompany" parameterType = "String" resultType = "com.db.recruit.RecruitDto">
+		select c.img, c.comName, c.tel, c.roadAddr, r.no, t.tag, r.career, r.category, r.title, r.text1, r.text2, r.text3, r.text4, r.text5 
+		from company C, recruit r, tag t
+		where c.comName = r.comName and t.no = r.no and c.comName = #{comName};
+	</select>
 </mapper>

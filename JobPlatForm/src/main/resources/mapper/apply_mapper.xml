@@ -6,7 +6,7 @@
   
 <mapper namespace = "com.db.mapper.ApplyMapper">
 	<select id = "selectIntroTitle" parameterType = "java.lang.String" resultType = "com.db.apply.ApplyDto">
-		select s.introNo, s.title from self_Intro s, member m where s.mEmail = #{mEmail};
+		select s.introNo, s.title from self_Intro s, member m where s.mEmail = m.mEmail and m.mEmail = #{mEmail};
 	</select>
 	
 	<insert id = "applyCompany" parameterType = "int">

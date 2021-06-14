@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import = "com.db.recruit.RecruitDto" %>
+<%@ page import = "com.db.dto.MemSignUpDTO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,6 @@
 	<%
 		RecruitDto a = (RecruitDto)session.getAttribute("recruit");
 		String img = a.getImg();
-		out.print(img);
 		String title = a.getTitle();
 		String comName = a.getComName();
 		String category = a.getCategory();
@@ -68,8 +68,6 @@
             var name = "지원하기";
             var option = "width = 500, height = 500, top = 100, left = 200, location = no"
             window.open(url, name, option); 
-            
-            
         }
     </script>
 </body>

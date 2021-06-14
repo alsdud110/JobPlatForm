@@ -30,7 +30,8 @@
       <li><a href="#">Com Page</a></li>
       <ul class="main-aside-submenu">
         <li><a href="#">기업정보</a></li>
-        <li><a href="#">공고관리</a></li>
+        <li><a href="/applyListMember">지원현황</a></li>
+        <li><a href="/recruit/recruitManagement">공고관리</a></li>
         <li><a href="#">기업탈퇴</a></li>
       </ul>
     </ul>

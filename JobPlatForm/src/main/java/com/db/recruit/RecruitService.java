@@ -44,4 +44,8 @@ public class RecruitService {
 	public List<RecruitDto> selectTag(int no){
 		return mapper.selectTag(no);
 	}
+	
+	public List<RecruitDto> selectRecruitByCompany(String comName){
+		return mapper.selectRecruitByCompany(comName);
+	}
 }

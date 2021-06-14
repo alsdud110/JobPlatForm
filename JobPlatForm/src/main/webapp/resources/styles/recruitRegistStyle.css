@@ -103,3 +103,7 @@ select{
   border: 1px solid grey;
 	box-shadow: white 0 0px 0px 40px inset;
 }
+
+.btn{
+	float : right;
+}

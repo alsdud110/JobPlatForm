@@ -50,9 +50,11 @@ public class CompanyController {
 		System.out.println(dto.getCareer());
 		service.companyRegist(dto);
 		
+		String tag = "";
 		for(int i = 0; i < cbTag.length; i++) {
-			service.insertTagByNo(no, cbTag[i]);
+			tag += cbTag[i] + " ";
 		}
+		service.insertTagByNo(no, tag);
 		return "redirect:/main";
 	}
 	

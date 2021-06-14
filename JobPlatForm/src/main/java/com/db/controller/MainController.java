@@ -25,6 +25,7 @@ public class MainController {
 		model.addAttribute("recruit", dto);
 		for(RecruitDto vo : dto) {
 			System.out.println(vo.getNo());
+			System.out.println(vo.getImg());
 		}
 		System.out.println(dto.size());
 		return "main/main";

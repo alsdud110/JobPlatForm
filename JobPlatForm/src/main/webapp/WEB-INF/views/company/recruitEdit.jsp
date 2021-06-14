@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ page import = "com.db.recruit.RecruitDto" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,64 +16,46 @@
 	<jsp:include page="../include/header.jsp" />
 	<jsp:include page="../include/main-aside.jsp" />
 	<jsp:include page="../include/comAside.jsp" />
-
+	
+	<div style = "text-align : center;">
 	<h2>모집 공고 수정</h2>
-
+	</div>
+<%
+	RecruitDto recruit = (RecruitDto)session.getAttribute("recruit");
+	String category = recruit.getCategory();
+	String title = recruit.getTitle();
+	String text1 = recruit.getText1();
+	String text2 = recruit.getText2();
+	String text3 = recruit.getText3();
+	String text4 = recruit.getText4();
+	String text5 = recruit.getText5();
+%>
 	<section class="Regist_Info">
 		<form class="RecruitmentField">
-			<b>모집 분야</b>
-			<select name="category">
-				<option value="카테고리선택" selected="selected">카테고리선택</option>
-				<option value="웹 개발">웹 개발</option>
-				<option value="모바일">모바일</option>
-				<option value="빅데이터">빅데이터</option>
-				<option value="DB">DB</option>
-			</select>
-			<br>
-			<br>
 			<b>공고 제목</b>
-			<input type="text" name="Tag" class="Regist_Title">
-			<input type="text" name="RNumber" class="RegistNumber"> 명 모집</input>
-			<br>
-			<br>
-			<b>경력 여부</b>
-			<span><input type="checkbox" name="cbNewcomer" value="신입">신입</span>
-			<span><input type="checkbox" name="cbCareer" value="경력">경력</span>
-			<span><input type="checkbox" name="cbNoCareer" value="경력무관">경력무관</span>
-			<br>
-			<br>
-			<b>태그</b>
-			<span><input type="checkbox" name="cbTag" value="java">java</span>
-			<span><input type="checkbox" name="cbCareer" value="C/C++">C/C++</span>
-			<span><input type="checkbox" name="cbNoCareer" value="python">python</span>
-     	 	<span><input type="checkbox" name="cbNoCareer" value="javascript">javascript</span>
-     		<span><input type="checkbox" name="cbNoCareer" value="spring">spring</span>
-      		<span><input type="checkbox" name="cbNoCareer" value="프론트엔드">프론트엔드</span>
-      		<span><input type="checkbox" name="cbNoCareer" value="백엔드">백엔드</span>
-      		<span><input type="checkbox" name="cbNoCareer" value="Oracle">Oracle</span>
-      		<span><input type="checkbox" name="cbNoCareer" value="MYSQL">MYSQL</span>
+			<input type="text" name="Tag" class="Regist_Title" value = "<%=title%>">
 			<br>
 			<br>
 			<b>담당 업무</b>
-			<input type="text" name="Text1" class="Recruit_Text1">
+			<input type="text" name="Text1" class="Recruit_Text1" value = "<%=text1 %>">
 			<br>
 			<br>
 			<b>전형 절차</b>
-			<input type="text" name="Text2" class="Recruit_Text2">
+			<input type="text" name="Text2" class="Recruit_Text2" value = "<%=text2%>">
 			<br>
 			<br>
 			<b>모집 기간</b>
-			<input type="text" name="Text3" class="Recruit_Text3">
+			<input type="text" name="Text3" class="Recruit_Text3" value = "<%=text3%>">
 			<br>
 			<br>
       <div class="CompanyIntro">
 			  <b>기업 소개</b>
-			  <textarea name="Text4" class="Recruit_Text4" rows="10" cols="100" wrap="virtual">원하시는 내용을 입력 해 주세요.</textarea>
+			  <textarea name="Text4" class="Recruit_Text4" rows="10" cols="100" wrap="virtual" value = "<%=text4%>">원하시는 내용을 입력 해 주세요.</textarea>
     </div>
 			<br>
 			<br>
 			<b>유의 사항</b>
-			<input type="text" name="Text5" class="Recruit_Text5">
+			<input type="text" name="Text5" class="Recruit_Text5" value = "<%=text5%>">
 		</form>
   
     <div class="buttons">

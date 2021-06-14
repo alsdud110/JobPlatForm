@@ -16,11 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.db.dto.ComSignUpDTO;
 import com.db.recruit.RecruitDto;
 import com.db.recruit.RecruitService;
 
 @Controller
-@RequestMapping("/recruit")
 public class RecruitController {
 	@Autowired
 	private RecruitService service;
@@ -29,7 +29,7 @@ public class RecruitController {
 		this.service = service;
 	}
 	
-	@RequestMapping("/{category}")
+	@RequestMapping("/recruit/{category}")
 	public String getListByCategory(@PathVariable String category, Model model) {
 		System.out.println(category);
 		if(category.equals("All")) {
@@ -53,7 +53,7 @@ public class RecruitController {
 		}
 	}
 	
-	@RequestMapping("/detail/{no}")
+	@RequestMapping("/recruit/detail/{no}")
 	public String getDetailRecruit(@PathVariable int no, Model model, HttpSession session) {
 		RecruitDto recruit = service.selectRecruitByNo(no);
 		List<RecruitDto> tag = service.selectTag(no);
@@ -62,7 +62,7 @@ public class RecruitController {
 		return "recruit/recruit_detail";
 	}
 	
-	@RequestMapping("/search")
+	@RequestMapping("/recruit/search")
 	public void searchBy(HttpServletRequest request, Model model, HttpServletResponse response) {
 		String searchBy = request.getParameter("searchBy");
 		String word = request.getParameter("word");
@@ -89,6 +89,33 @@ public class RecruitController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping("/recruit/recruitManagement")
+	public String applyListMember(HttpSession session, Model model){
+		ComSignUpDTO company = (ComSignUpDTO)session.getAttribute("company");
+		String comName = company.getCom_name();
+		
+		System.out.println(comName);
+		List<RecruitDto> dto = service.selectRecruitByCompany(comName);
+		
+		model.addAttribute("dto", dto);
+		return "company/recruitList";
+	}
+	
+	@RequestMapping("/editRecruit/{no}")
+	public String editRecruit(@PathVariable int no, HttpSession session, Model model) {
+		System.out.println(no);
+
+		RecruitDto recruit = service.selectRecruitByNo(no);
+		List<RecruitDto> tag = service.selectTag(no);
+		for(RecruitDto vo : tag) {
+			System.out.println(vo.getTag());
+		}
+		model.addAttribute("tag", tag);
+		session.setAttribute("recruit", recruit);
+		return "company/recruitEdit";
+	}
+
 	
 	
 }

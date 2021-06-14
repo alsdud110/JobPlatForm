@@ -15,21 +15,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.db.apply.ApplyDto;
 import com.db.apply.ApplyService;
+import com.db.dto.ComSignUpDTO;
 import com.db.dto.MemSignUpDTO;
 import com.db.recruit.RecruitDto;
+import com.db.recruit.RecruitService;
 
 @Controller
 public class ApplyController {
 	@Autowired
 	private ApplyService service;
 	
-	public ApplyController(ApplyService service) {
+	@Autowired
+	private RecruitService recruitService;
+	
+	public ApplyController(ApplyService service, RecruitService recruitService) {
 		this.service = service;
+		this.recruitService = recruitService;
 	}
 
 	@RequestMapping("/selectTitle")
 	public String selectIntroTitle(HttpServletRequest request, HttpServletResponse response, HttpSession session, Model model) throws IOException {
 		MemSignUpDTO member = (MemSignUpDTO)session.getAttribute("member");
+		if(member == null) {
+			response.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+		    out.println("<script>alert('로그인이 필요합니다.'); window.close(); </script>");
+		    out.flush();
+		}
 		String mEmail = member.getMem_useremail();
 		
 		List<ApplyDto> dto = service.selectIntroTitle(mEmail);
@@ -47,9 +60,11 @@ public class ApplyController {
 		int introNo = Integer.parseInt(request.getParameter("selfIntro"));
 		service.applCompany(no, introNo);
 		
-		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-	    out.println("성공적으로 지원 되었습니다.");
+		PrintWriter out = response.getWriter();
+	    out.println("<script>alert('성공적으로 지원 되었습니다.'); window.close(); </script>");
+	    out.flush();
 	}
 	
 	@RequestMapping("/applyList")
@@ -61,6 +76,8 @@ public class ApplyController {
 		model.addAttribute("dto", dto);
 		return "myPage/applyList";
 	}
+	
+	
 	
 //	@RequestMapping("/applyDetail/{introNo}")
 //	public String applyDetailByIntroNo(@PathVariable int IntroNo) {
